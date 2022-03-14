@@ -6,8 +6,10 @@ img:hover{
 
 img {
     transition: 0.5s ease;
+    width: 300px;
 }
 
 span {
     color: black;
 }
+

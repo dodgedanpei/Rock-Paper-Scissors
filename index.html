@@ -16,19 +16,22 @@
         <h1>Rock, Paper Scissors</h1>
         <h2>First to five wins!</h2>
       </center>
+
         <div class="row">
           <div class="col">
-            <img src="./images/rock.jpg" class="img-thumbnail" id="rock">
+            <img src="./images/rock.jpg"   " id="rock">
+          </div>
+          <div class="col ">
+            <img src="./images/paper.jpg" id="paper">
           </div>
           <div class="col">
-            <img src="./images/paper.jpg" class="img-thumbnail" id="paper">
-          </div>
-          <div class="col">
-            <img src="./images/scissors.jpg" class="img-thumbnail" id="scissors">
+            <img src="./images/scissors.jpg" id="scissors">
           </div>
         </div>
 
-        <div class="card">
+
+
+        <div class="row">
             <div class="card-body">
             <h5 class="card-title text-success">Player Score: <span id="playerDisplay">0</span></h5>
             <h5 class="card-title text-danger">Computer Score: <span id="computerDisplay">0</span></h5>
@@ -36,6 +39,14 @@
             <button type="button" class="btn btn-primary" id="reset">Reset</button>
             </div>
           </div>
+
+        
+        
+          <div class="alert alert-info" role="alert" id="results">
+            Awaiting results...
+          </div>
+        
+        
 
           
 
