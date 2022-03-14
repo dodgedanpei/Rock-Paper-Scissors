@@ -10,7 +10,7 @@ const cScoreDisplay = document.getElementById("computerDisplay")
 const dScoreDisplay = document.getElementById("drawsDisplay")
 const startOver = document.getElementById("reset");
 const resultText = document.getElementById("results")
-
+resultText.setAttribute('style', 'white-space: pre;');
 
 
 const winningScore = 5;
@@ -26,10 +26,11 @@ computerChoice = () => {
     return choice;
 }
 
-playerWin = () => {
+playerWin = (player,comp) => {
     if(!isGameOver){
         pScore += 1;
         pScoreDisplay.textContent = pScore;
+        results.textContent = `You chose ${player}. \r\nComputer chose ${comp}. \r\nYou win a point!`;
         if(pScore == winningScore){
             isGameOver = true;
             pScoreDisplay.classList.add("text-success")
@@ -37,10 +38,11 @@ playerWin = () => {
     }
 }
 
-compWin = () => {
+compWin = (player,comp) => {
     if(!isGameOver){
         cScore += 1;
         cScoreDisplay.textContent = cScore;
+        results.textContent = `You chose ${player}. \r\nComputer chose ${comp}. \r\nComputer wins a point!`;
         if(cScore == winningScore){
             isGameOver = true;
             cScoreDisplay.classList.add("text-danger")
@@ -49,10 +51,11 @@ compWin = () => {
 }
 
 
-drawEvent = () =>{
+drawEvent = (player,comp) =>{
     if(!isGameOver){
         dScore += 1;
         dScoreDisplay.textContent = dScore;
+        results.textContent = `You chose ${player}. \r\nComputer also chose ${comp}. \r\nThis round is a tie!`;
 }}
 
 checkingResults = () => {
@@ -65,15 +68,12 @@ playerRock = () => {
     const player = 'rock';
     const computer = computerChoice();
     if(player == computer) {
-        drawEvent();
-        results.textContent = 'Player: Rock. Computer: Rock. Result: Draw';
+        drawEvent(player, computer);
     } else if (computer == 'scissors') {
-        playerWin();
-        results.textContent = 'Player: Rock. Computer: Scissors. Result: Win';
+        playerWin(player, computer);
         checkingResults();
     } else {
-        compWin(); 
-        results.textContent = 'Player: Rock. Computer: Paper. Result: Lose';
+        compWin(player, computer); 
         checkingResults();
     }
     
@@ -83,15 +83,12 @@ playerScissors = () => {
     const player = 'scissors';
     const computer = computerChoice();
     if(player == computer) {
-        drawEvent();
-        results.textContent = 'Player: Scissors. Computer: Scissors. Result: Draw';
+        drawEvent(player, computer);
     } else if (computer == 'paper') {
-        playerWin()
-        results.textContent = 'Player: Scissors. Computer: Paper. Result: Win';
+        playerWin(player, computer)
         checkingResults();
     } else {
-        compWin();
-        results.textContent = 'Player: Scissors. Computer: Rock. Result: Lose';
+        compWin(player, computer);
         checkingResults();
     }
     
@@ -101,15 +98,12 @@ playerPaper = () => {
     const player = 'paper';
     const computer = computerChoice();
     if(player == computer) {
-        drawEvent();
-        results.textContent = 'Player: Paper. Computer: Paper. Result: Draw';
+        drawEvent(player, computer);
     } else if (computer == 'rock') {
-        playerWin();
-        results.textContent = 'Player: Paper. Computer: Rock. Result: Win';
+        playerWin(player, computer);
         checkingResults();
     } else {
-        compWin();
-        results.textContent = 'Player: Paper. Computer: Scissors. Result: Lose';
+        compWin(player, computer);
         checkingResults();
     }
     
