@@ -137,5 +137,5 @@ startOver.addEventListener('click', () => {
     isGameOver = false;
     cScoreDisplay.classList.remove("danger")
     pScoreDisplay.classList.remove("success")
-    resultsinfo.textContent = ""
+    resultsinfo.textContent = "Nothing so far..."
 })
