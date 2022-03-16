@@ -30,10 +30,10 @@ playerWin = (player,comp) => {
     if(!isGameOver){
         pScore += 1;
         pScoreDisplay.textContent = pScore;
-        results.textContent = `You chose ${player}. \r\nComputer chose ${comp}. \r\nYou win a point!`;
+        results.textContent = `Successful attack! Your ${player} defeated the Computer's ${comp}.`;
         if(pScore == winningScore){
             isGameOver = true;
-            pScoreDisplay.classList.add("text-success")
+            pScoreDisplay.classList.add("success")
         }
     }
 }
@@ -42,10 +42,10 @@ compWin = (player,comp) => {
     if(!isGameOver){
         cScore += 1;
         cScoreDisplay.textContent = cScore;
-        results.textContent = `You chose ${player}. \r\nComputer chose ${comp}. \r\nComputer wins a point!`;
+        results.textContent = `Attack failed. Your ${player} was defeated by the Computer's ${comp}.`;
         if(cScore == winningScore){
             isGameOver = true;
-            cScoreDisplay.classList.add("text-danger")
+            cScoreDisplay.classList.add("danger")
         }
     }
 }
@@ -55,12 +55,15 @@ drawEvent = (player,comp) =>{
     if(!isGameOver){
         dScore += 1;
         dScoreDisplay.textContent = dScore;
-        results.textContent = `You chose ${player}. \r\nComputer also chose ${comp}. \r\nThis round is a tie!`;
+        results.textContent = `You both chose ${player}. It's a tie.`;
 }}
 
 checkingResults = () => {
-    if(isGameOver == true) {
-        results.textContent = 'Game is over!';
+    if(isGameOver == true && pScore === 5) {
+        results.textContent = 'Game is over! You win.';
+    }
+    else if(isGameOver == true && cScore === 5) {
+        results.textContent = 'Game is over! You lost.';
     }
 }
 
@@ -132,7 +135,7 @@ startOver.addEventListener('click', () => {
     dScore = 0;
     dScoreDisplay.textContent = dScore;
     isGameOver = false;
-    cScoreDisplay.classList.remove("text-danger")
-    pScoreDisplay.classList.remove("text-success")
-    resultsinfo.textContent = "Awaiting results..."
+    cScoreDisplay.classList.remove("danger")
+    pScoreDisplay.classList.remove("success")
+    resultsinfo.textContent = ""
 })
