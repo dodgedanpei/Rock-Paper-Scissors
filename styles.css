@@ -63,9 +63,13 @@ span {
     color: red;
 }
 
+.tie {
+    color: #6c757d;
+}
+
 #reset {
     background-color: red;
-    color: white;
+    color: #6c757d;
     border: 1px solid red;
     border-radius: 12px;
     padding: 8px;

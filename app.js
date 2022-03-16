@@ -31,6 +31,8 @@ playerWin = (player,comp) => {
         pScore += 1;
         pScoreDisplay.textContent = pScore;
         results.textContent = `Successful attack! Your ${player} defeated the Computer's ${comp}.`;
+        results.classList.remove("danger", "tie")
+        results.classList.add("success")
         if(pScore == winningScore){
             isGameOver = true;
             pScoreDisplay.classList.add("success")
@@ -43,6 +45,8 @@ compWin = (player,comp) => {
         cScore += 1;
         cScoreDisplay.textContent = cScore;
         results.textContent = `Attack failed. Your ${player} was defeated by the Computer's ${comp}.`;
+        results.classList.remove("success", "tie")
+        results.classList.add("danger")
         if(cScore == winningScore){
             isGameOver = true;
             cScoreDisplay.classList.add("danger")
@@ -56,6 +60,9 @@ drawEvent = (player,comp) =>{
         dScore += 1;
         dScoreDisplay.textContent = dScore;
         results.textContent = `You both chose ${player}. It's a tie.`;
+        results.classList.remove("success", "danger")
+        results.classList.add("tie")
+
 }}
 
 checkingResults = () => {
@@ -138,4 +145,6 @@ startOver.addEventListener('click', () => {
     cScoreDisplay.classList.remove("danger")
     pScoreDisplay.classList.remove("success")
     resultsinfo.textContent = "Nothing so far..."
+    results.classList.remove("success", "danger")
+    results.classList.add("tie")
 })
